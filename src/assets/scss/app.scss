@@ -62,3 +62,8 @@
 // Motion UI
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+@import 'fontawesome.scss';
+@import 'regular.scss';
+@import 'brands.scss';
+@import 'bbm';

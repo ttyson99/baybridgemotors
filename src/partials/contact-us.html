@@ -1,0 +1,77 @@
+  <section id="contact-us">
+    <div class="grid-x contact-us align-center">
+      <div class="cell">
+        <h1 class="text-center headline">MESSAGE US</h1>
+      </div>
+      <div class="cell">
+        <h2 class="subhead text-center">NOW</h2>
+      </div>
+      <div class="cell large-6 medium-10 small-12">
+        <form id="contact-us-form" name="contact-us-form" action="{{root}}php/_contact.php" method="POST" data-abide novalidate>
+          <input id="redirect" name="redirect" type="hidden" value="../request-quote/thank-you/">
+          <div data-abide-error role="alert" class="alert callout" style="display: none;">
+            <p><i class="far fa-exclamation-triangle"></i> There are some errors in your form.</p>
+          </div>
+          <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="small-6 cell">
+              <label for="first_name">First Name*
+                <input type="text" id="first_name" name="first_name" required>
+                <span class="form-error">Please enter your first name.</span>
+              </label>
+            </div>
+            <div class="small-6 cell">
+              <label for="last_name">Last Name*
+                <input type="text" id="last_name" name="last_name" required>
+                <span class="form-error">Please enter your last name.</span>
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x">
+            <div class="small-12 cell">
+              <label for="email">Email*
+                <input type="email" id="email" name="email" required>
+                <span class="form-error">Please enter a valid email address.</span>
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x">
+            <div class="small-12 cell">
+              <label for="phone">Phone*
+                <input type="tel" id="phone" name="phone" required>
+                <span class="form-error">Please enter a valid phone number with area code.</span>
+              </label>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x">
+            <div class="small-12 cell">
+              <label for="message">Message</label>
+              <textarea type="textarea" rows="5" cols="40" id="message" name="message" data-abide-ignore></textarea>
+            </div>
+          </div>
+          <div class="cell text-center"><button type="submit" class="button alert">SEND MESSAGE</button></div>
+          <div class="cell text-center">
+            <p style="padding-top: 1rem">Copyright &copy; 2019 Bay Bridge Motors - All rights reserved</p>
+          </div>
+          <div id='recaptcha' class="g-recaptcha"
+            data-sitekey="6LcixLsUAAAAAGiOVFKmqYqG7eIhON5gywqO386r"
+            data-callback="onSubmit"
+            data-size="invisible"
+            data-theme="dark"></div>
+        </form>
+
+        <script>
+          var onSubmit = function(response) {
+            document.getElementById("contact-us-form").submit();
+          };
+
+          var onloadCallback = function() {
+            grecaptcha.render('recaptcha', {
+              'sitekey': '6LcixLsUAAAAAGiOVFKmqYqG7eIhON5gywqO386r',
+              'callback': onSubmit
+            });
+          };
+        </script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+      </div>
+    </div>
+  </section>

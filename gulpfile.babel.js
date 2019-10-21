@@ -32,7 +32,7 @@ function loadConfig() {
 // Build the "dist" folder by running all of the below tasks
 // Sass must be run later so UnCSS can search for used classes in the others assets.
 gulp.task('build',
- gulp.series(clean, gulp.parallel(pages, javascript, images, copy), sass, styleGuide));
+ gulp.series(clean, gulp.parallel(pages, javascript, images, copy, copyphp), sass, styleGuide));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
@@ -145,7 +145,11 @@ function images() {
     ])))
     .pipe(gulp.dest(PATHS.dist + '/assets/img'));
 }
-
+// Copy PHP pages directly to dist/php
+function copyphp() {
+  return gulp.src('src/php/**/*')
+  .pipe(gulp.dest(PATHS.dist + '/php'));
+}
 // Start a server with BrowserSync to preview the site in
 function server(done) {
   browser.init({
